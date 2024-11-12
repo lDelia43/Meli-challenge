@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ogx!t!jd@(0fcfjut-@jfj(o(907xr1nb%t2q_t!9mpnn_*#iv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['meli-challenge-lb0x.onrender.com']
+ALLOWED_HOSTS = ['meli-challenge-lb0x.onrender.com', "127.0.0.1"]
 
 
 # Application definition
