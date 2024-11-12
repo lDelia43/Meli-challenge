@@ -23,3 +23,19 @@ def mutant_view(request):
             return JsonResponse({'error': 'Invalid DNA data'}, status=400)
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
+def stats_view(request):
+    # Contar el número de mutantes y humanos
+    count_mutant_dna = DnaSequence.objects.filter(is_mutant=True).count()
+    count_human_dna = DnaSequence.objects.filter(is_mutant=False).count()
+    
+    # Evitar la división por cero
+    ratio = count_mutant_dna / (count_human_dna + count_mutant_dna) if (count_human_dna + count_mutant_dna) > 0 else 0
+    
+    # Devolver los resultados en JSON
+    return JsonResponse({
+        "count_mutant_dna": count_mutant_dna,
+        "count_human_dna": count_human_dna,
+        "ratio": ratio
+    })
